@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geometric Angles Explorer</title>
+  <style>
+    /* RESET & BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    header, footer {
+      text-align: center;
+      background: #fff;
+      padding: 15px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    /* TABS NAVIGATION */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #007BFF;
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      background: none;
+      border: none;
+      border-bottom: 4px solid transparent;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #007BFF;
+      transition: all 0.3s;
+    }
+    .tabs button.active {
+      border-bottom-color: #007BFF;
+      font-weight: bold;
+    }
+    /* TAB CONTENT */
+    .tabcontent {
+      display: none;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+    /* Common styles for sections */
+    section {
+      margin-bottom: 20px;
+    }
+    section p, section ul {
+      margin-bottom: 10px;
+    }
+    section ul li {
+      margin-left: 20px;
+      list-style: disc;
+    }
+    /* CALCULATOR & DIAGRAM FORM */
+    .calc {
+      margin: 15px 0;
+      text-align: center;
+    }
+    .calc label {
+      display: inline-block;
+      width: 200px;
+      font-weight: bold;
+    }
+    .calc input {
+      padding: 5px;
+      width: 100px;
+      margin-right: 10px;
+    }
+    .btn {
+      padding: 7px 15px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 10px;
+      padding: 10px;
+      background: #e9f2f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+    }
+    /* CANVAS */
+    canvas {
+      display: block;
+      margin: 20px auto;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Geometric Angles Explorer</h1>
+  </header>
+  <div class="container">
+    <!-- Tabs Navigation -->
+    <div class="tabs">
+      <button class="tablinks active" onclick="openTab(event, 'info')" id="defaultTab">Info</button>
+      <button class="tablinks" onclick="openTab(event, 'calculator')">Calculator</button>
+      <button class="tablinks" onclick="openTab(event, 'diagram')">Diagram</button>
+    </div>
+
+    <!-- Info Tab -->
+    <div id="info" class="tabcontent active">
+      <h2>Internal and External Angles in Polygons</h2>
+      <section>
+        <p><strong>Interior Angles:</strong></p>
+        <ul>
+          <li>The sum of interior angles of an n‑sided convex polygon is: <em>(n – 2) × 180°</em>.</li>
+          <li>For a regular polygon, each interior angle is: <em>((n – 2) × 180°) / n</em>.</li>
+        </ul>
+      </section>
+      <section>
+        <p><strong>Exterior Angles:</strong></p>
+        <ul>
+          <li>Each exterior angle (for a regular polygon) is: <em>360° / n</em>.</li>
+          <li>The sum of exterior angles in any convex polygon is always: <em>360°</em>.</li>
+        </ul>
+      </section>
+      <section>
+        <p>This app helps you explore these formulas and calculate angles for any regular polygon. Use the Calculator tab for interactive computations and the Diagram tab to see a visual representation of a regular polygon with its interior and exterior angles marked.</p>
+      </section>
+    </div>
+
+    <!-- Calculator Tab -->
+    <div id="calculator" class="tabcontent">
+      <h2>Polygon Angle Calculator</h2>
+      <div class="calc">
+        <label for="numSides">Number of sides (n):</label>
+        <input type="number" id="numSides" min="3" step="1" placeholder="e.g., 5">
+        <button class="btn" onclick="calcPolygonAngles()">Calculate</button>
+      </div>
+      <div id="calcResult" class="result"></div>
+    </div>
+
+    <!-- Diagram Tab -->
+    <div id="diagram" class="tabcontent">
+      <h2>Polygon Diagram</h2>
+      <div class="calc">
+        <label for="diagSides">Number of sides (n):</label>
+        <input type="number" id="diagSides" min="3" step="1" placeholder="e.g., 5">
+        <button class="btn" onclick="drawPolygon()">Draw Polygon</button>
+      </div>
+      <canvas id="diagramCanvas" width="400" height="400"></canvas>
+      <div id="diagramLabels" class="result"></div>
+    </div>
+  </div>
+  <footer>
+    Bocaletto Luca
+  </footer>
+  
+  <script>
+    "use strict";
+    // TAB NAVIGATION FUNCTION
+    function openTab(evt, tabName) {
+      const tabcontents = document.getElementsByClassName("tabcontent");
+      for (let i = 0; i < tabcontents.length; i++) {
+        tabcontents[i].style.display = "none";
+        tabcontents[i].classList.remove("active");
+      }
+      const tablinks = document.getElementsByClassName("tablinks");
+      for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(tabName).style.display = "block";
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    document.getElementById("defaultTab").click();
+
+    /* ------ CALCULATOR FUNCTIONS ------ */
+    function calcPolygonAngles() {
+      const n = parseInt(document.getElementById("numSides").value);
+      const result = document.getElementById("calcResult");
+      if (isNaN(n) || n < 3) {
+        result.innerHTML = "<p>Please enter a valid integer (n ≥ 3).</p>";
+        return;
+      }
+      const sumInterior = (n - 2) * 180;
+      const interior = sumInterior / n;
+      const exterior = 360 / n; // for a regular convex polygon
+      result.innerHTML = `<p>For a regular polygon with <strong>${n}</strong> sides:</p>
+                            <p>Sum of interior angles: <strong>${sumInterior}°</strong></p>
+                            <p>Each interior angle: <strong>${interior.toFixed(2)}°</strong></p>
+                            <p>Each exterior angle: <strong>${exterior.toFixed(2)}°</strong></p>`;
+    }
+
+    /* ------ DIAGRAM FUNCTIONS ------ */
+    function drawPolygon() {
+      const n = parseInt(document.getElementById("diagSides").value);
+      const labelsDiv = document.getElementById("diagramLabels");
+      if (isNaN(n) || n < 3) {
+        labelsDiv.innerHTML = "<p>Please enter a valid integer (n ≥ 3).</p>";
+        return;
+      }
+      // Clear previous labels
+      labelsDiv.innerHTML = "";
+      const canvas = document.getElementById("diagramCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const radius = 150; // fixed radius for drawing purposes
+      const startAngle = -Math.PI / 2; // start from top
+      
+      let vertices = [];
+      for (let i = 0; i < n; i++) {
+        const angle = startAngle + (2 * Math.PI * i / n);
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+        vertices.push({ x, y });
+      }
+      
+      // Draw polygon
+      ctx.strokeStyle = "#007BFF";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(vertices[0].x, vertices[0].y);
+      for (let i = 1; i < n; i++) {
+        ctx.lineTo(vertices[i].x, vertices[i].y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+
+      // Display the computed angles using formulas.
+      const sumInterior = (n - 2) * 180;
+      const interior = sumInterior / n;
+      const exterior = 360 / n;  // or 180 - interior
+      
+      // Draw arc at the first vertex (vertices[0]) to indicate the interior angle.
+      const arcRadius = 30;
+      // Determine direction of the arcs: use the line toward vertex n-1 and vertex 1.
+      const angle1 = Math.atan2(vertices[n - 1].y - vertices[0].y, vertices[n - 1].x - vertices[0].x);
+      const angle2 = Math.atan2(vertices[1].y - vertices[0].y, vertices[1].x - vertices[0].x);
+      // For a convex polygon, the interior angle is the positive difference.
+      let arcStart = angle1;
+      let arcEnd = angle2;
+      if (arcEnd < arcStart) {
+        arcEnd += 2 * Math.PI;
+      }
+      // Draw the arc to represent the interior angle near vertex0.
+      ctx.beginPath();
+      ctx.arc(vertices[0].x, vertices[0].y, arcRadius, arcStart, arcEnd);
+      ctx.strokeStyle = "#FF5722";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      
+      // Write angle texts near the first vertex.
+      ctx.fillStyle = "#000";
+      ctx.font = "14px Arial";
+      ctx.fillText(`Interior: ${interior.toFixed(1)}°`, vertices[0].x + arcRadius + 5, vertices[0].y);
+      ctx.fillText(`Exterior: ${exterior.toFixed(1)}°`, vertices[0].x + arcRadius + 5, vertices[0].y + 16);
+      
+      // Also output the formulas in the labels section.
+      labelsDiv.innerHTML = `<p>Sum of interior angles: ${(n - 2) * 180}°</p>
+                             <p>Each interior angle: ${interior.toFixed(2)}°</p>
+                             <p>Each exterior angle: ${exterior.toFixed(2)}°</p>`;
+    }
+  </script>
+</body>
+</html>
